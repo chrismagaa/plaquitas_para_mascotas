@@ -25,7 +25,8 @@
             app:cardElevation="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardViewDelantera">
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/clTraseraINE"
@@ -158,12 +159,12 @@
                     android:layout_width="80dp"
                     android:layout_height="110dp"
                     android:layout_marginStart="20dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView14"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvEdad"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textView8" />
+                    app:layout_constraintTop_toTopOf="@+id/tvNombre" />
 
                 <TextView
-                    android:id="@+id/textView8"
+                    android:id="@+id/tvNombre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -177,179 +178,71 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
                 <TextView
-                    android:id="@+id/textView10"
+                    android:id="@+id/tvTel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
                     android:text="@string/txt_Tel"
                     android:textColor="@color/black"
                     android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="@+id/textView8"
-                    app:layout_constraintTop_toBottomOf="@+id/textView8" />
+                    app:layout_constraintStart_toStartOf="@+id/tvNombre"
+                    app:layout_constraintTop_toBottomOf="@+id/tvNombre" />
 
                 <TextView
-                    android:id="@+id/textView11"
+                    android:id="@+id/tvRaza"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
                     android:text="@string/txt_Raza"
                     android:textColor="@color/black"
                     android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="@+id/textView10"
-                    app:layout_constraintTop_toBottomOf="@+id/textView9" />
+                    app:layout_constraintStart_toStartOf="@+id/tvTel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDomicilio" />
 
                 <TextView
-                    android:id="@+id/textView12"
+                    android:id="@+id/tvColor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
                     android:text="@string/txt_Color"
                     android:textColor="@color/black"
                     android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="@+id/textView11"
-                    app:layout_constraintTop_toBottomOf="@+id/textView11" />
+                    app:layout_constraintStart_toStartOf="@+id/tvRaza"
+                    app:layout_constraintTop_toBottomOf="@+id/tvRaza" />
 
                 <TextView
-                    android:id="@+id/textView13"
+                    android:id="@+id/tvOcupacion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
                     android:text="@string/txt_Ocupacion"
                     android:textColor="@color/black"
                     android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="@+id/textView12"
-                    app:layout_constraintTop_toBottomOf="@+id/textView12" />
+                    app:layout_constraintStart_toStartOf="@+id/tvColor"
+                    app:layout_constraintTop_toBottomOf="@+id/tvColor" />
 
                 <TextView
-                    android:id="@+id/textView14"
+                    android:id="@+id/tvEdad"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
                     android:text="@string/txt_EDAD"
                     android:textColor="@color/black"
                     android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="@+id/textView13"
-                    app:layout_constraintTop_toBottomOf="@+id/textView13" />
+                    app:layout_constraintStart_toStartOf="@+id/tvOcupacion"
+                    app:layout_constraintTop_toBottomOf="@+id/tvOcupacion" />
 
                 <TextView
-                    android:id="@+id/editNombre"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView8"
-                    app:layout_constraintEnd_toStartOf="@+id/textView24"
-                    app:layout_constraintStart_toEndOf="@+id/textView8" />
-
-                <TextView
-                    android:id="@+id/editTel"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView10"
-                    app:layout_constraintEnd_toEndOf="@+id/editNombre"
-                    app:layout_constraintStart_toEndOf="@+id/textView10" />
-
-                <TextView
-                    android:id="@+id/editRaza"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
-                    android:layout_marginEnd="8dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView11"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/textView11" />
-
-                <TextView
-                    android:id="@+id/editColor"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
-                    android:layout_marginEnd="8dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView12"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/textView12" />
-
-                <TextView
-                    android:id="@+id/editOcupacion"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
-                    android:layout_marginEnd="8dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView13"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/textView13" />
-
-                <TextView
-                    android:id="@+id/editEdad"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView14"
-                    app:layout_constraintEnd_toStartOf="@+id/imageView8"
-                    app:layout_constraintStart_toEndOf="@+id/textView14" />
-
-                <TextView
-                    android:id="@+id/editSexo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="6dp"
-                    android:layout_marginBottom="4dp"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/editNombre"
-                    app:layout_constraintEnd_toEndOf="parent" />
-
-                <TextView
-                    android:id="@+id/textView24"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="@string/txt_sexo"
-                    android:textColor="@color/black"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/editSexo"
-                    app:layout_constraintEnd_toStartOf="@+id/editSexo" />
-
-                <TextView
-                    android:id="@+id/textView9"
+                    android:id="@+id/tvDomicilio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
                     android:text="@string/txt_domicilio"
                     android:textColor="@color/black"
                     android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="@+id/textView10"
-                    app:layout_constraintTop_toBottomOf="@+id/textView10" />
+                    app:layout_constraintStart_toStartOf="@+id/tvTel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTel" />
 
-                <TextView
-                    android:id="@+id/editDomicilio"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView9"
-                    app:layout_constraintEnd_toEndOf="@+id/editNombre"
-                    app:layout_constraintStart_toEndOf="@+id/textView9" />
 
                 <ImageView
                     android:id="@+id/imageView8"
@@ -387,5 +280,17 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnRotar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:src="@drawable/ic_baseline_360_24"
+        app:layout_constraintTop_toBottomOf="@id/constraintLayoutPlaca"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

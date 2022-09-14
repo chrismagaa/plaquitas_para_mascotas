@@ -21,10 +21,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             app:cardCornerRadius="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardViewFrente">
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/contraint_background_detras"
@@ -290,83 +290,7 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
 
-                <TextView
-                    android:id="@+id/editNombre"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:lines="1"
-                    android:textColor="@color/black"
-                    app:layout_constraintBottom_toBottomOf="@+id/tvNombre"
-                    app:layout_constraintEnd_toStartOf="@+id/cvPet"
-                    app:layout_constraintStart_toEndOf="@+id/tvNombre"
-                    app:layout_constraintTop_toTopOf="@+id/tvNombre" />
 
-                <TextView
-                    android:id="@+id/editTel"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:lines="1"
-                    android:textColor="@color/black"
-                    app:layout_constraintBottom_toBottomOf="@+id/tvTel"
-                    app:layout_constraintEnd_toStartOf="@+id/cvPet"
-                    app:layout_constraintStart_toEndOf="@+id/tvTel"
-                    app:layout_constraintTop_toTopOf="@+id/tvTel" />
-
-                <TextView
-                    android:id="@+id/editRaza"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:lines="1"
-                    android:textColor="@color/black"
-                    app:layout_constraintBottom_toBottomOf="@+id/tvRaza"
-                    app:layout_constraintEnd_toStartOf="@+id/cvPet"
-                    app:layout_constraintStart_toEndOf="@+id/tvRaza"
-                    app:layout_constraintTop_toTopOf="@+id/tvRaza" />
-
-                <TextView
-                    android:id="@+id/editColor"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:lines="1"
-                    android:textColor="@color/black"
-                    app:layout_constraintBottom_toBottomOf="@+id/tvColor"
-                    app:layout_constraintEnd_toStartOf="@+id/cvPet"
-                    app:layout_constraintStart_toEndOf="@+id/tvColor"
-                    app:layout_constraintTop_toBottomOf="@+id/tvRaza" />
-
-                <TextView
-                    android:id="@+id/editOcupacion"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:lines="1"
-                    android:textColor="@color/black"
-                    app:layout_constraintBottom_toBottomOf="@+id/tvOcupacion"
-                    app:layout_constraintEnd_toStartOf="@+id/cvPet"
-                    app:layout_constraintStart_toEndOf="@+id/tvOcupacion"
-                    app:layout_constraintTop_toTopOf="@+id/tvOcupacion" />
-
-                <TextView
-                    android:id="@+id/editEdad"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:lines="1"
-                    android:textColor="@color/black"
-                    app:layout_constraintBottom_toBottomOf="@+id/tvEdad"
-                    app:layout_constraintEnd_toStartOf="@+id/cvPet"
-                    app:layout_constraintStart_toEndOf="@+id/tvEdad"
-                    app:layout_constraintTop_toTopOf="@+id/tvEdad" />
 
                 <ImageView
                     android:id="@+id/imageView3"
@@ -389,17 +313,7 @@
                     app:layout_constraintStart_toStartOf="@+id/tvTel"
                     app:layout_constraintTop_toBottomOf="@+id/tvTel" />
 
-                <TextView
-                    android:id="@+id/editDomicilio"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:lines="1"
-                    android:textColor="@color/black"
-                    app:layout_constraintBottom_toBottomOf="@+id/textViewDomicilio"
-                    app:layout_constraintEnd_toStartOf="@+id/cvPet"
-                    app:layout_constraintStart_toEndOf="@+id/textViewDomicilio" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -427,6 +341,19 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnEdit"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnRotar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:src="@drawable/ic_baseline_360_24"
+        app:layout_constraintTop_toBottomOf="@id/constraintLayoutPlaca"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

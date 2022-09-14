@@ -1,6 +1,7 @@
 package com.camg_apps.placas_perros.plantillas
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ContentValues
 import android.content.DialogInterface
@@ -19,6 +20,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -90,6 +92,9 @@ class plantillaINEFragment : Fragment(), EditFragment.EditDialogInterface {
         binding.btnEdit.setOnClickListener {
             showDialogEditTextos()
         }
+        binding.btnRotar.setOnClickListener {
+            rotarPlaca()
+        }
 
         permissionLaucher =
             registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
@@ -104,8 +109,27 @@ class plantillaINEFragment : Fragment(), EditFragment.EditDialogInterface {
         return binding.root
     }
 
+    private fun rotarPlaca() {
+        if(binding.cardViewDelantera.isVisible){
+            binding.cardViewDelantera.visibility = View.INVISIBLE
+            binding.cardViewTrasera.visibility  = View.VISIBLE
+        }else{
+            binding.cardViewDelantera.visibility = View.VISIBLE
+            binding.cardViewTrasera.visibility  = View.INVISIBLE
+        }
+    }
+
     private fun showDialogEditTextos() {
-        val dialog = EditFragment(mascota ?: Mascota("", "", "", "", "", "", "", "", ""))
+        val dialog = EditFragment(mascota ?: Mascota(
+            binding.tvNombre.text.toString(),
+            binding.tvTel.text.toString(),
+            binding.tvDomicilio.text.toString(),
+            binding.tvRaza.text.toString(),
+            binding.tvColor.text.toString(),
+            binding.tvOcupacion.text.toString(),
+            binding.tvEdad.text.toString(),
+            binding.editNombreDueno.text.toString(),
+            ""))
         dialog.show(childFragmentManager, "SHOW_EDIT_DIALOG")
     }
 
@@ -407,17 +431,18 @@ class plantillaINEFragment : Fragment(), EditFragment.EditDialogInterface {
     }
 
 
+    @SuppressLint("SetTextI18n")
     private fun setDataViews() {
         mascota?.let { mascota ->
 
-            binding.editNombre.text = mascota.nombre
-            binding.editTel.text = mascota.tel
-            binding.editDomicilio.text = mascota.domicilio
-            binding.editRaza.text = mascota.raza
-            binding.editColor.text = mascota.color
-            binding.editOcupacion.text = mascota.ocupacion
-            binding.editEdad.text = mascota.edad
-            binding.editSexo.text = mascota.sexo
+            binding.tvNombre.text = mascota.nombre
+            binding.tvTel.text = mascota.tel
+            binding.tvDomicilio.text = mascota.domicilio
+            binding.tvRaza.text = mascota.raza
+            binding.tvColor.text = mascota.color
+            binding.tvOcupacion.text = mascota.ocupacion
+            binding.tvEdad.text = mascota.edad
+            //binding.editSexo.text = mascota.sexo
             binding.editNombreDueno.text = mascota.dueno
             mPetImageUri?.let {
                 binding.imageViewPet.setImageURI(it)

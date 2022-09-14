@@ -20,6 +20,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.findNavController
 import com.camg_apps.placas_perros.R
@@ -91,6 +92,10 @@ class plantillaIFEFragment : Fragment(), EditFragment.EditDialogInterface {
             showDialogEditTextos()
         }
 
+        binding.btnRotar.setOnClickListener {
+            rotarPlaca()
+        }
+
         permissionLaucher =
             registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
                 readPermissionGranted =
@@ -105,8 +110,28 @@ class plantillaIFEFragment : Fragment(), EditFragment.EditDialogInterface {
         return binding.root
     }
 
+    private fun rotarPlaca() {
+        if(binding.cardViewFrente.isVisible){
+            binding.cardViewFrente.visibility = View.INVISIBLE
+            binding.cardViewTrasera.visibility  = View.VISIBLE
+        }else{
+            binding.cardViewFrente.visibility = View.VISIBLE
+            binding.cardViewTrasera.visibility  = View.INVISIBLE
+        }
+    }
+
+
     private fun showDialogEditTextos() {
-        val dialog = EditFragment(mascota ?: Mascota("", "", "", "", "", "", "", "", ""))
+        val dialog = EditFragment(mascota ?: Mascota(
+            binding.tvNombre.text.toString(),
+            binding.tvTel.text.toString(),
+            binding.textViewDomicilio.text.toString(),
+            binding.tvRaza.text.toString(),
+            binding.tvColor.text.toString(),
+            binding.tvOcupacion.text.toString(),
+            binding.tvEdad.text.toString(),
+            binding.editNombreDueno.text.toString(),
+            ""))
         dialog.show(childFragmentManager, "SHOW_EDIT_DIALOG")
     }
 
@@ -260,13 +285,13 @@ class plantillaIFEFragment : Fragment(), EditFragment.EditDialogInterface {
 
     private fun setDataViews() {
         mascota?.let { mascota ->
-            binding.editNombre.text = mascota.nombre
-            binding.editTel.text = mascota.tel
-            binding.editDomicilio.text = mascota.domicilio
-            binding.editRaza.text = mascota.raza
-            binding.editColor.text = mascota.color
-            binding.editOcupacion.text = mascota.ocupacion
-            binding.editEdad.text = mascota.edad
+            binding.tvNombre.text = mascota.nombre
+            binding.tvTel.text = mascota.tel
+            binding.textViewDomicilio.text = mascota.domicilio
+            binding.tvRaza.text = mascota.raza
+            binding.tvColor.text = mascota.color
+            binding.tvOcupacion.text = mascota.ocupacion
+            binding.tvEdad.text = mascota.edad
             binding.editNombreDueno.text = mascota.dueno
             mPetImageUri?.let {
                 binding.imageViewPet.setImageURI(it)

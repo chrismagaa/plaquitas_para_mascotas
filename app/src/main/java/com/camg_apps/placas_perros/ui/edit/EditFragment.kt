@@ -16,7 +16,7 @@ import com.camg_apps.placas_perros.data.Mascota
 import com.google.android.material.textfield.TextInputLayout
 
 
-class EditFragment(private var mascota: Mascota, ) : DialogFragment() {
+class EditFragment(private var mascota: Mascota) : DialogFragment() {
 
     private var mListener: EditDialogInterface? = null
     interface EditDialogInterface{
