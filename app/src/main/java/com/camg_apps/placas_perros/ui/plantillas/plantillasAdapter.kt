@@ -9,12 +9,14 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import com.camg_apps.placas_perros.R
+import com.camg_apps.placas_perros.data.Template
+import com.camg_apps.placas_perros.databinding.FragmentPlantillaIFEBinding
 import com.camg_apps.placas_perros.plantillas.plantillaIFEFragment
 import com.camg_apps.placas_perros.plantillas.plantillaINEFragment
 
 
 class plantillasAdapter(
-    private val values: List<Int>,
+    private val values: List<Template>,
     private val navController: NavController
 ) : RecyclerView.Adapter<plantillasAdapter.ViewHolder>() {
 
@@ -26,26 +28,10 @@ class plantillasAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        holder.ivDesign.setImageResource(item)
+        holder.ivDesign.setImageResource(item.drawableTemplateFrontal!!)
         holder.cvPlantilla.setOnClickListener {
-            when(position){
-                0 -> {
-                    val bundle = bundleOf(plantillaINEFragment.EXTRA_BACKGROUND to R.drawable.ic_nuevo_fondo_ine,
-                        plantillaINEFragment.EXTRA_BACKGROUND_ATRAS to R.drawable.ic_fondo_atras_ine)
-                    navController.navigate(R.id.action_nav_plantillas_to_plantillaINEFragment, bundle)
-                }
-                1 -> {
-                    val bundle = bundleOf(plantillaIFEFragment.EXTRA_BACKGROUND to R.drawable.ic_fondo_nuevo_ife,
-                        plantillaIFEFragment.EXTRA_BACKGROUND_ATRAS to R.drawable.ic_fondo_detras_ife)
-                    navController.navigate(R.id.action_nav_plantillas_to_plantillaIFEFragment, bundle)
-                }
-                2 -> {
-                    val bundle = bundleOf(plantillaIFEFragment.EXTRA_BACKGROUND to R.drawable.ic_fondo_ife_azulito,
-                        plantillaIFEFragment.EXTRA_BACKGROUND_ATRAS to R.drawable.ic_fondo_detras_ife_azul)
-                    navController.navigate(R.id.action_nav_plantillas_to_plantillaIFEFragment, bundle)
-                }
-
-            }
+            val bundle = bundleOf(plantillaIFEFragment.EXTRA_TEMPLATE to item)
+            navController.navigate(R.id.action_nav_plantillas_to_plantillaIFEFragment, bundle)
         }
     }
 

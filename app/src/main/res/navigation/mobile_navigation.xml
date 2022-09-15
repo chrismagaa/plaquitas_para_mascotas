@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/nav_plantillas"
         android:name="com.camg_apps.placas_perros.ui.plantillas.plantillasFragment"
-        android:label="@string/menu_plantillas"
+        android:label="@string/menu_plantillas_perros"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_nav_plantillas_to_plantillaINEFragment"
@@ -46,4 +46,17 @@
         android:name="com.camg_apps.placas_perros.ui.preview.PdfPreviewFragment"
         android:label="@string/txt_vista_previa"
         tools:layout="@layout/fragment_pdf_preview" />
+    <fragment
+        tools:layout="@layout/fragment_plantillas_gatos_list"
+        android:id="@+id/nav_plantillas_gatos"
+        android:name="com.camg_apps.placas_perros.ui.plantillas.PlantillasGatosFragment"
+        android:label="PlantillasGatosFragment" >
+
+        <action
+            android:id="@+id/action_nav_plantillas_gatos_to_plantillaINEFragment"
+            app:destination="@id/plantillaINEFragment" />
+        <action
+            android:id="@+id/action_nav_plantillas_gatos_to_plantillaIFEFragment"
+            app:destination="@id/plantillaIFEFragment" />
+    </fragment>
 </navigation>

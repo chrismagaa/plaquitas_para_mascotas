@@ -13,10 +13,13 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.*
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.core.os.bundleOf
@@ -27,6 +30,7 @@ import com.camg_apps.placas_perros.R
 import com.camg_apps.placas_perros.admob.AdMobManager
 import com.camg_apps.placas_perros.common.sdk29AndUp
 import com.camg_apps.placas_perros.data.Mascota
+import com.camg_apps.placas_perros.data.Template
 import com.camg_apps.placas_perros.databinding.FragmentPlantillaIFEBinding
 import com.camg_apps.placas_perros.ui.edit.EditFragment
 import com.camg_apps.placas_perros.ui.plantillas.PdfPetCreator
@@ -34,6 +38,7 @@ import com.camg_apps.placas_perros.ui.preview.PdfPreviewFragment
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.gms.ads.AdRequest
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import org.w3c.dom.Text
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.IOException
@@ -43,6 +48,8 @@ import kotlin.properties.Delegates
 
 class plantillaIFEFragment : Fragment(), EditFragment.EditDialogInterface {
 
+    private var cvDeltantera: View? = null
+    private var cvTrasera: View? = null
     private var mPetImageUri: Uri? = null
     private var _binding: FragmentPlantillaIFEBinding? = null
     private val binding get() = _binding!!
@@ -55,18 +62,17 @@ class plantillaIFEFragment : Fragment(), EditFragment.EditDialogInterface {
 
 
     companion object {
-        const val EXTRA_BACKGROUND = "background_placa"
-        const val EXTRA_BACKGROUND_ATRAS = "background_placa_atras"
+        const val EXTRA_TEMPLATE = "extra_template"
     }
 
-    var background by Delegates.notNull<Int>()
-    var background_detras by Delegates.notNull<Int>()
+   // var background by Delegates.notNull<Int>()
+   // var background_detras by Delegates.notNull<Int>()
+    var template: Template? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            background = it.getInt(plantillaINEFragment.EXTRA_BACKGROUND)
-            background_detras = it.getInt(plantillaINEFragment.EXTRA_BACKGROUND_ATRAS)
+            template = it.getParcelable(EXTRA_TEMPLATE)
         }
     }
 
@@ -78,8 +84,11 @@ class plantillaIFEFragment : Fragment(), EditFragment.EditDialogInterface {
 
         AdMobManager.loadAd(requireActivity())
 
-        binding.contraintBackground.setBackgroundResource(background)
-        binding.contraintBackgroundDetras.setBackgroundResource(background_detras)
+        cvDeltantera = layoutInflater.inflate(template!!.layoutFrontal ,null) as View
+        cvTrasera = layoutInflater.inflate(template!!.layoutTrasera, null) as View
+        binding.constraintLayoutPlaca.addView(cvTrasera)
+        binding.constraintLayoutPlaca.addView(cvDeltantera)
+
 
         setHasOptionsMenu(true)
         setDataViews()
@@ -111,26 +120,26 @@ class plantillaIFEFragment : Fragment(), EditFragment.EditDialogInterface {
     }
 
     private fun rotarPlaca() {
-        if(binding.cardViewFrente.isVisible){
-            binding.cardViewFrente.visibility = View.INVISIBLE
-            binding.cardViewTrasera.visibility  = View.VISIBLE
+        if(cvDeltantera!!.isVisible){
+            cvDeltantera!!.visibility = View.INVISIBLE
+            cvTrasera!!.visibility  = View.VISIBLE
         }else{
-            binding.cardViewFrente.visibility = View.VISIBLE
-            binding.cardViewTrasera.visibility  = View.INVISIBLE
+            cvDeltantera!!.visibility = View.VISIBLE
+            cvTrasera!!.visibility  = View.INVISIBLE
         }
     }
 
 
     private fun showDialogEditTextos() {
         val dialog = EditFragment(mascota ?: Mascota(
-            binding.tvNombre.text.toString(),
-            binding.tvTel.text.toString(),
-            binding.textViewDomicilio.text.toString(),
-            binding.tvRaza.text.toString(),
-            binding.tvColor.text.toString(),
-            binding.tvOcupacion.text.toString(),
-            binding.tvEdad.text.toString(),
-            binding.editNombreDueno.text.toString(),
+            cvDeltantera!!.findViewById<TextView>(R.id.tvNombre).text.toString(),
+            cvDeltantera!!.findViewById<TextView>(R.id.tvTel).text.toString(),
+            cvDeltantera!!.findViewById<TextView>(R.id.textViewDomicilio).text.toString(),
+            cvDeltantera!!.findViewById<TextView>(R.id.tvRaza).text.toString(),
+            cvDeltantera!!.findViewById<TextView>(R.id.tvColor).text.toString(),
+            cvDeltantera!!.findViewById<TextView>(R.id.tvOcupacion).text.toString(),
+            cvDeltantera!!.findViewById<TextView>(R.id.tvEdad).text.toString(),
+            cvTrasera!!.findViewById<TextView>(R.id.editNombreDueno).text.toString(),
             ""))
         dialog.show(childFragmentManager, "SHOW_EDIT_DIALOG")
     }
@@ -213,11 +222,7 @@ class plantillaIFEFragment : Fragment(), EditFragment.EditDialogInterface {
          */
     }
 
-    private fun changeBackgroundColor(selectedColor: Int) {
-        binding.cardViewFrente.background.setTint(selectedColor)
-        binding.cardViewTrasera.background.setTint(selectedColor)
 
-    }
 
     fun crearPdf() {
         val bsPlaca = ByteArrayOutputStream()
@@ -272,7 +277,7 @@ class plantillaIFEFragment : Fragment(), EditFragment.EditDialogInterface {
                 val fileUri = data?.data!!
                 mPetImageUri = fileUri
                 mPetImageUri?.let {
-                    binding.imageViewPet.setImageURI(it)
+                    cvDeltantera!!.findViewById<ImageView>(R.id.imageViewPet).setImageURI(it)
                 }
             } else if (resultCode == ImagePicker.RESULT_ERROR) {
                 Toast.makeText(requireContext(), ImagePicker.getError(data), Toast.LENGTH_SHORT)
@@ -285,16 +290,16 @@ class plantillaIFEFragment : Fragment(), EditFragment.EditDialogInterface {
 
     private fun setDataViews() {
         mascota?.let { mascota ->
-            binding.tvNombre.text = mascota.nombre
-            binding.tvTel.text = mascota.tel
-            binding.textViewDomicilio.text = mascota.domicilio
-            binding.tvRaza.text = mascota.raza
-            binding.tvColor.text = mascota.color
-            binding.tvOcupacion.text = mascota.ocupacion
-            binding.tvEdad.text = mascota.edad
-            binding.editNombreDueno.text = mascota.dueno
+            cvDeltantera!!.findViewById<TextView>(R.id.tvNombre).text = mascota.nombre
+            cvDeltantera!!.findViewById<TextView>(R.id.tvTel).text  = mascota.tel
+            cvDeltantera!!.findViewById<TextView>(R.id.textViewDomicilio).text  = mascota.domicilio
+            cvDeltantera!!.findViewById<TextView>(R.id.tvRaza).text  = mascota.raza
+            cvDeltantera!!.findViewById<TextView>(R.id.tvColor).text = mascota.color
+            cvDeltantera!!.findViewById<TextView>(R.id.tvOcupacion).text  = mascota.ocupacion
+            cvDeltantera!!.findViewById<TextView>(R.id.tvEdad).text  = mascota.edad
+            cvTrasera!!.findViewById<TextView>(R.id.editNombreDueno).text  = mascota.dueno
             mPetImageUri?.let {
-                binding.imageViewPet.setImageURI(it)
+                cvDeltantera!!.findViewById<ImageView>(R.id.imageViewPet).setImageURI(it)
             }
         }
     }
@@ -347,7 +352,7 @@ class plantillaIFEFragment : Fragment(), EditFragment.EditDialogInterface {
     private fun compartirParteTrasera() {
         if (writePermissionGranted) {
             AdMobManager.showAd(requireActivity()){
-                shareImage(UUID.randomUUID().toString(), getBitmapFromView(binding.cardViewTrasera)!!)
+                shareImage(UUID.randomUUID().toString(), getBitmapFromView(cvTrasera!!)!!)
             }
         } else {
             updateOrRequestPermissions()
@@ -357,7 +362,7 @@ class plantillaIFEFragment : Fragment(), EditFragment.EditDialogInterface {
     private fun compartirParteDelantera() {
         if (writePermissionGranted) {
             AdMobManager.showAd(requireActivity()){
-                shareImage(UUID.randomUUID().toString(), getBitmapFromView(binding.cardViewFrente)!!)
+                shareImage(UUID.randomUUID().toString(), getBitmapFromView(cvDeltantera!!)!!)
             }
         } else {
             updateOrRequestPermissions()
@@ -409,7 +414,7 @@ class plantillaIFEFragment : Fragment(), EditFragment.EditDialogInterface {
             AdMobManager.showAd(requireActivity()) {
                 savePhotoToExternalStorage(
                     UUID.randomUUID().toString(),
-                    getBitmapFromView(binding.cardViewTrasera)!!
+                    getBitmapFromView(cvTrasera!!)!!
                 )
             }
         } else {
@@ -422,7 +427,7 @@ class plantillaIFEFragment : Fragment(), EditFragment.EditDialogInterface {
             AdMobManager.showAd(requireActivity()) {
                 savePhotoToExternalStorage(
                     UUID.randomUUID().toString(),
-                    getBitmapFromView(binding.cardViewFrente)!!
+                    getBitmapFromView(cvDeltantera!!)!!
                 )
             }
         } else {

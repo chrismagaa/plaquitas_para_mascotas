@@ -11,8 +11,28 @@
         <entry key="..\:/Users/christian/AndroidStudioProjects/Plaquitasparamascotas/app/src/main/res/layout/fragment_pdf_preview.xml" value="0.13994565217391305" />
         <entry key="..\:/Users/christian/AndroidStudioProjects/Plaquitasparamascotas/app/src/main/res/layout/fragment_plantilla_i_f_e.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/christian/AndroidStudioProjects/Plaquitasparamascotas/app/src/main/res/layout/fragment_plantilla_i_n_e.xml" value="0.25052083333333336" />
+        <entry key="app/src/main/res/drawable/ic_fondo_atras_ine.xml" value="0.371" />
+        <entry key="app/src/main/res/drawable/ic_fondo_nuevo_ife.xml" value="0.371" />
+        <entry key="app/src/main/res/drawable/ic_nuevo_fondo_ine.xml" value="0.371" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3703125" />
+        <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.3703125" />
+        <entry key="app/src/main/res/layout/content_main.xml" value="0.3703125" />
+        <entry key="app/src/main/res/layout/fragment_edit.xml" value="0.3703125" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3703125" />
+        <entry key="app/src/main/res/layout/fragment_pdf_preview.xml" value="0.3703125" />
         <entry key="app/src/main/res/layout/fragment_plantilla_i_f_e.xml" value="0.3703125" />
-        <entry key="app/src/main/res/layout/fragment_plantilla_i_n_e.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_plantilla_i_n_e.xml" value="0.75" />
+        <entry key="app/src/main/res/layout/fragment_plantillas.xml" value="0.3703125" />
+        <entry key="app/src/main/res/layout/fragment_plantillas_gatos_list.xml" value="0.3692708333333333" />
+        <entry key="app/src/main/res/layout/fragment_plantillas_list.xml" value="0.3703125" />
+        <entry key="app/src/main/res/layout/template_ife_frontal.xml" value="0.3692708333333333" />
+        <entry key="app/src/main/res/layout/template_ife_trasera.xml" value="0.3692708333333333" />
+        <entry key="app/src/main/res/layout/template_ine_frontal.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/template_ine_trasera.xml" value="0.3692708333333333" />
+        <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.3703125" />
+        <entry key="app/src/main/res/menu/main.xml" value="0.3703125" />
+        <entry key="app/src/main/res/menu/menu_feedback.xml" value="0.3703125" />
+        <entry key="app/src/main/res/menu/menu_plantilla.xml" value="0.3703125" />
       </map>
     </option>
   </component>

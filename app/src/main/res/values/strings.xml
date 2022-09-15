@@ -11,8 +11,10 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="txt_instituto_federal_canino">INSTITUTO FEDERAL CANINO</string>
+    <string name="txt_instituto_federal_gatuno">INSTITUTO FEDERAL GATUNO</string>
     <string name="txt_registro_de_amiguito">REGISTRO DE AMIGUITOS PELUDOS</string>
     <string name="txt_credencial_ladrar">CREDENCIAL PARA LADRAR</string>
+    <string name="txt_credencial_maullar">CREDENCIAL PARA MAULLAR</string>
     <string name="txt_nombre">Nombre:</string>
     <string name="txt_dueno">Dueño</string>
     <string name="txt_Tel">Tel:</string>
@@ -30,7 +32,8 @@
     <string name="txt_sexo">SEXO:</string>
     <string name="txt_domicilio">Domicilio:</string>
     <string name="menu_feedback">Retroalimentación</string>
-    <string name="menu_plantillas">Plantillas</string>
+    <string name="menu_plantillas_perros">Plantillas Perros</string>
+    <string name="menu_plantillas_gatos">Plantillas Gatos</string>
     <string name="menu_acerca_de">Acerca de</string>
     <string name="txt_nombre_mascota">Nombre mascota</string>
     <string name="txt_telefono">Telefono</string>
