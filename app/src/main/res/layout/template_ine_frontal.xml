@@ -11,7 +11,7 @@
     app:layout_constraintTop_toTopOf="parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clFrente"
+        android:id="@+id/contraint_background"
         android:layout_width="310dp"
         android:layout_height="200dp"
         android:background="@drawable/ic_nuevo_fondo_ine">
@@ -27,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/tvTitleCard"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -41,7 +41,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/tvSubtitleCard"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_bold"
@@ -49,9 +49,9 @@
             android:textColor="@color/black"
             android:textSize="10sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/textView6"
-            app:layout_constraintStart_toStartOf="@+id/textView6"
-            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+            app:layout_constraintEnd_toEndOf="@+id/tvTitleCard"
+            app:layout_constraintStart_toStartOf="@+id/tvTitleCard"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitleCard" />
 
         <ImageView
             android:id="@+id/imageViewPet"
@@ -75,7 +75,7 @@
             android:textStyle="normal|bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageViewPet"
-            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+            app:layout_constraintTop_toBottomOf="@+id/tvSubtitleCard" />
 
         <TextView
             android:id="@+id/tvTel"

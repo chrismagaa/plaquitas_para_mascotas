@@ -7,11 +7,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.navigation.fragment.findNavController
 import com.camg_apps.placas_perros.R
 import com.camg_apps.placas_perros.common.MyUtil
-import com.camg_apps.placas_perros.data.providerData
+import com.camg_apps.placas_perros.data.ProviderData
 import com.camg_apps.placas_perros.databinding.FragmentPlantillasListBinding
 
 
-class plantillasFragment : Fragment() {
+class PlantillasFragment : Fragment() {
 
     private var _binding: FragmentPlantillasListBinding? = null
     val binding get () = _binding!!
@@ -23,8 +23,9 @@ class plantillasFragment : Fragment() {
         _binding= FragmentPlantillasListBinding.inflate(inflater, container, false)
 
         setHasOptionsMenu(true)
+
         binding.list.layoutManager = LinearLayoutManager(context)
-        binding.list.adapter = plantillasAdapter(providerData.templatesPerros, findNavController())
+        binding.list.adapter = plantillasAdapter(R.drawable.ic_pet, ProviderData(requireContext()).templatesPerros, findNavController())
 
 
         return binding.root

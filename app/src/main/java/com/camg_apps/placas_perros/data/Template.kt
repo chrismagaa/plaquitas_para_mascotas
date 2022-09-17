@@ -5,9 +5,9 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Template(
-    private var title: Int?,
-    private var subtitle: Int?,
-    private var leyenda: Int?,
+    var title: String?,
+     var subtitle: String?,
+     var leyenda: String?,
     val drawableTemplateFrontal: Int?,
     val drawableTemplateTrasera: Int?,
     val layoutFrontal: Int,

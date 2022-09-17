@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_plantillas"
-        android:name="com.camg_apps.placas_perros.ui.plantillas.plantillasFragment"
+        android:name="com.camg_apps.placas_perros.ui.plantillas.PlantillasFragment"
         android:label="@string/menu_plantillas_perros"
         tools:layout="@layout/fragment_home" >
         <action
@@ -47,10 +47,11 @@
         android:label="@string/txt_vista_previa"
         tools:layout="@layout/fragment_pdf_preview" />
     <fragment
-        tools:layout="@layout/fragment_plantillas_gatos_list"
         android:id="@+id/nav_plantillas_gatos"
+        android:label="@string/menu_plantillas_gatos"
+        tools:layout="@layout/fragment_plantillas_gatos_list"
         android:name="com.camg_apps.placas_perros.ui.plantillas.PlantillasGatosFragment"
-        android:label="PlantillasGatosFragment" >
+        >
 
         <action
             android:id="@+id/action_nav_plantillas_gatos_to_plantillaINEFragment"

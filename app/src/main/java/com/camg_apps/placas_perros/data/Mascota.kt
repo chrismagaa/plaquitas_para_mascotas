@@ -14,6 +14,6 @@ class Mascota(
         val ocupacion: String,
         val edad: String,
         val dueno: String,
-        val sexo: String,
+        val sexo: String? = "",
 ) : Parcelable {
 }

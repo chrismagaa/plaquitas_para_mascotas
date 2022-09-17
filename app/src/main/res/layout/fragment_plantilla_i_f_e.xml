@@ -36,8 +36,7 @@
         android:clickable="true"
         android:src="@drawable/ic_baseline_add_a_photo_24"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayoutPlaca"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toStartOf="@+id/btnText"
         app:layout_constraintStart_toEndOf="@+id/btnEdit"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -53,6 +52,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:src="@drawable/ic_baseline_text_fields_24"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayoutPlaca"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnImagen"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView android:id="@+id/cardViewFrente"
+<androidx.cardview.widget.CardView xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardViewFrente"
     android:layout_width="310dp"
     android:layout_height="200dp"
     app:cardCornerRadius="16dp"
@@ -16,40 +17,33 @@
         android:background="@drawable/ic_fondo_nuevo_ife">
 
         <TextView
-            android:id="@+id/tvPrimerTitulo"
+            android:id="@+id/tvTitleCard"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="8dp"
             android:text="@string/txt_instituto_federal_canino"
             android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toEndOf="@+id/imageView3"
+            app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
         <TextView
-            android:id="@+id/tvSegundoTitulo"
+            android:id="@+id/tvSubtitleCard"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/txt_registro_de_amiguito"
-            android:textColor="@color/black"
-            android:textSize="10sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/tvPrimerTitulo"
-            app:layout_constraintTop_toBottomOf="@+id/tvPrimerTitulo" />
-
-        <TextView
-            android:id="@+id/tvTercerTitulo"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="2dp"
             android:text="@string/txt_credencial_ladrar"
             android:textColor="@color/black"
-            android:textSize="10sp"
+            android:textSize="11sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/tvSegundoTitulo"
-            app:layout_constraintTop_toBottomOf="@+id/tvSegundoTitulo" />
+            app:layout_constraintStart_toEndOf="@+id/imageView3" />
 
         <TextView
             android:id="@+id/tvNombre"
@@ -64,7 +58,7 @@
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTercerTitulo" />
+            app:layout_constraintTop_toBottomOf="@+id/tvSubtitleCard" />
 
         <TextView
             android:id="@+id/tvTel"
@@ -90,7 +84,7 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewDomicilio" />
+            app:layout_constraintTop_toBottomOf="@+id/tvDomicilio" />
 
         <TextView
             android:id="@+id/tvColor"
@@ -143,8 +137,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#A67474">
+                android:layout_height="match_parent">
 
                 <ImageView
                     android:id="@+id/imageViewPet"
@@ -160,19 +153,19 @@
         </androidx.cardview.widget.CardView>
 
 
-
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            app:layout_constraintBottom_toTopOf="@+id/tvNombre"
-            app:layout_constraintEnd_toStartOf="@+id/tvSegundoTitulo"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/tvTitleCard"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_pawprint" />
 
         <TextView
-            android:id="@+id/textViewDomicilio"
+            android:id="@+id/tvDomicilio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#FAF8F8"

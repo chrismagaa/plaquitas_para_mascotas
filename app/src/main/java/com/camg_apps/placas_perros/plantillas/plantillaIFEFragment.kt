@@ -20,6 +20,7 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.core.os.bundleOf
@@ -33,6 +34,7 @@ import com.camg_apps.placas_perros.data.Mascota
 import com.camg_apps.placas_perros.data.Template
 import com.camg_apps.placas_perros.databinding.FragmentPlantillaIFEBinding
 import com.camg_apps.placas_perros.ui.edit.EditFragment
+import com.camg_apps.placas_perros.ui.edit.EditTemplateDialogFragment
 import com.camg_apps.placas_perros.ui.plantillas.PdfPetCreator
 import com.camg_apps.placas_perros.ui.preview.PdfPreviewFragment
 import com.github.dhaval2404.imagepicker.ImagePicker
@@ -46,7 +48,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.properties.Delegates
 
-class plantillaIFEFragment : Fragment(), EditFragment.EditDialogInterface {
+class plantillaIFEFragment : Fragment(), EditFragment.EditDialogInterface, EditTemplateDialogFragment.EditTemplateInterface {
 
     private var cvDeltantera: View? = null
     private var cvTrasera: View? = null
@@ -63,16 +65,19 @@ class plantillaIFEFragment : Fragment(), EditFragment.EditDialogInterface {
 
     companion object {
         const val EXTRA_TEMPLATE = "extra_template"
+        const val EXTRA_IMAGE = "extra_image"
     }
 
    // var background by Delegates.notNull<Int>()
    // var background_detras by Delegates.notNull<Int>()
     var template: Template? = null
+    var imageId: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             template = it.getParcelable(EXTRA_TEMPLATE)
+            imageId = it.getInt(EXTRA_IMAGE)
         }
     }
 
@@ -105,6 +110,10 @@ class plantillaIFEFragment : Fragment(), EditFragment.EditDialogInterface {
             rotarPlaca()
         }
 
+        binding.btnText.setOnClickListener {
+            showDialogEditTemplate()
+        }
+
         permissionLaucher =
             registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
                 readPermissionGranted =
@@ -117,6 +126,14 @@ class plantillaIFEFragment : Fragment(), EditFragment.EditDialogInterface {
 
 
         return binding.root
+    }
+
+    private fun showDialogEditTemplate() {
+        template!!.title = cvDeltantera!!.findViewById<TextView>(R.id.tvTitleCard).text.toString()
+        template!!.subtitle = cvDeltantera!!.findViewById<TextView>(R.id.tvSubtitleCard).text.toString()
+        template!!.leyenda = cvTrasera!!.findViewById<TextView>(R.id.tvLeyenda).text.toString()
+        val dialog = EditTemplateDialogFragment(template!!)
+        dialog.show(childFragmentManager, "SHOW_EDIT_DIALOG")
     }
 
     private fun rotarPlaca() {
@@ -134,7 +151,7 @@ class plantillaIFEFragment : Fragment(), EditFragment.EditDialogInterface {
         val dialog = EditFragment(mascota ?: Mascota(
             cvDeltantera!!.findViewById<TextView>(R.id.tvNombre).text.toString(),
             cvDeltantera!!.findViewById<TextView>(R.id.tvTel).text.toString(),
-            cvDeltantera!!.findViewById<TextView>(R.id.textViewDomicilio).text.toString(),
+            cvDeltantera!!.findViewById<TextView>(R.id.tvDomicilio).text.toString(),
             cvDeltantera!!.findViewById<TextView>(R.id.tvRaza).text.toString(),
             cvDeltantera!!.findViewById<TextView>(R.id.tvColor).text.toString(),
             cvDeltantera!!.findViewById<TextView>(R.id.tvOcupacion).text.toString(),
@@ -289,10 +306,20 @@ class plantillaIFEFragment : Fragment(), EditFragment.EditDialogInterface {
 
 
     private fun setDataViews() {
+        template?.let {
+            cvDeltantera!!.findViewById<ConstraintLayout>(R.id.contraint_background).setBackgroundResource(it.drawableTemplateFrontal!!)
+            cvDeltantera!!.findViewById<TextView>(R.id.tvTitleCard).text = it.title
+            cvDeltantera!!.findViewById<TextView>(R.id.tvSubtitleCard).text = it.subtitle
+            cvTrasera!!.findViewById<TextView>(R.id.tvLeyenda).text = it.leyenda
+            cvTrasera!!.findViewById<ConstraintLayout>(R.id.contraint_background_detras).setBackgroundResource(it.drawableTemplateTrasera!!)
+
+        }
+
+
         mascota?.let { mascota ->
             cvDeltantera!!.findViewById<TextView>(R.id.tvNombre).text = mascota.nombre
             cvDeltantera!!.findViewById<TextView>(R.id.tvTel).text  = mascota.tel
-            cvDeltantera!!.findViewById<TextView>(R.id.textViewDomicilio).text  = mascota.domicilio
+            cvDeltantera!!.findViewById<TextView>(R.id.tvDomicilio).text  = mascota.domicilio
             cvDeltantera!!.findViewById<TextView>(R.id.tvRaza).text  = mascota.raza
             cvDeltantera!!.findViewById<TextView>(R.id.tvColor).text = mascota.color
             cvDeltantera!!.findViewById<TextView>(R.id.tvOcupacion).text  = mascota.ocupacion
@@ -301,6 +328,12 @@ class plantillaIFEFragment : Fragment(), EditFragment.EditDialogInterface {
             mPetImageUri?.let {
                 cvDeltantera!!.findViewById<ImageView>(R.id.imageViewPet).setImageURI(it)
             }
+        }
+
+
+
+        imageId?.let {
+            cvDeltantera!!.findViewById<ImageView>(R.id.imageViewPet).setImageResource(it)
         }
     }
 
@@ -463,6 +496,18 @@ class plantillaIFEFragment : Fragment(), EditFragment.EditDialogInterface {
         this.mascota = mascotaNuevo
         setDataViews()
         dialog.dismiss()
+    }
+
+    override fun changeData(dialog: DialogFragment, template: Template) {
+        this.template = template
+        setTemplateDataViews()
+        dialog.dismiss()
+    }
+
+    private fun setTemplateDataViews() {
+        cvDeltantera!!.findViewById<TextView>(R.id.tvTitleCard).text = template?.title?: ""
+        cvDeltantera!!.findViewById<TextView>(R.id.tvSubtitleCard).text = template?.subtitle?: ""
+        cvTrasera!!.findViewById<TextView>(R.id.tvLeyenda).text = template?.leyenda?: ""
     }
 
 

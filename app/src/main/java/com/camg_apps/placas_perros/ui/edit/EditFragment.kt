@@ -74,8 +74,7 @@ class EditFragment(private var mascota: Mascota) : DialogFragment() {
         val ocupacion = view.findViewById<TextInputLayout>(R.id.textInputOcupacion).editText!!.text.toString()
         val edad = view.findViewById<TextInputLayout>(R.id.textInputEdad).editText!!.text.toString()
         val nombreDueno = view.findViewById<TextInputLayout>(R.id.textInputNombreDueno).editText!!.text.toString()
-        var sexo = "H"
-        if (view.findViewById<RadioButton>(R.id.radioButtonMacho).isChecked) sexo = "M"
+
 
         mascota = Mascota(
             nombre,
@@ -85,8 +84,7 @@ class EditFragment(private var mascota: Mascota) : DialogFragment() {
             color,
             ocupacion,
             edad,
-            nombreDueno,
-            sexo
+            nombreDueno
         )
     }
 

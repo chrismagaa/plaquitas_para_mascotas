@@ -35,7 +35,7 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tvLeyenda"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_marginStart="26dp"
@@ -57,8 +57,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@+id/cardView3"
-            app:layout_constraintEnd_toEndOf="@+id/textView2"
-            app:layout_constraintStart_toStartOf="@+id/textView2">
+            app:layout_constraintEnd_toEndOf="@+id/tvLeyenda"
+            app:layout_constraintStart_toStartOf="@+id/tvLeyenda">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

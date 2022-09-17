@@ -11,7 +11,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clTraseraINE"
+        android:id="@+id/contraint_background_detras"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="@drawable/ic_fondo_atras_ine">
@@ -57,7 +57,7 @@
             app:layout_constraintTop_toTopOf="@+id/cardView4" />
 
         <TextView
-            android:id="@+id/textView26"
+            android:id="@+id/tvLeyenda"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
